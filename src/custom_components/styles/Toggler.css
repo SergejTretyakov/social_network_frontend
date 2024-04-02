@@ -1,0 +1,46 @@
+#back{
+    background-color: rgb(88, 85, 85);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 20px;
+}
+.PrismaneButton-text{
+    font-size: 18px !important;
+}
+.PrismaneButton-root:focus{
+    outline: none;
+}
+.prismane-c-gsWpOQ{
+    background-color: transparent !important;
+}
+.Register, .Login{
+    width: 100% !important;
+    border-radius: 25px !important;
+    height: 35px !important;
+    background-color: transparent !important;
+    border: none;
+}
+.Register{
+    margin-left: 10px;
+}
+.Login{
+    margin-right: 10px;
+}
+.Register-selected{
+    width: 100% !important;
+    border-radius: 25px !important;
+    height: 35px !important;
+    border: none;
+    background: linear-gradient(45deg, rgb(224, 157, 255), rgb(255, 229, 0));
+    margin-left: 10px;
+}
+.Login-selected{
+    width: 100% !important;
+    border-radius: 25px !important;
+    height: 35px !important;
+    border: none;
+    background: linear-gradient(45deg,rgb(255, 229, 0), rgb(224, 157, 255));
+    margin-right: 10px;
+}
