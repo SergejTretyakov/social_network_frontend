@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import {Form, TextField, Button, PasswordField} from "@prismane/core";
 import { TextFieldProps, PasswordFieldProps } from '@prismane/core';
 import { Flex } from "@prismane/core";
@@ -23,13 +23,14 @@ function Login(){
     return(
         <div>
            <Form
-                onSubmit={(e: SubmitEvent) => handleSubmit(e, (v) => console.log(v))}
+                onSubmit={(e: FormEvent<HTMLFormElement>) => handleSubmit(e, (v) => console.log(v))}
                 onReset={handleReset}
                 
             >
-                <Flex className="inputs_login" direction={'column'}>
+                <Flex className="inputs_login" gap={20} direction={'column'}>
                     <TextField size="lg" className="logem" {...register("email")} placeholder="Enter email" label="Email:" />
-                    <PasswordField size="lg" id="logpass" {...register("password")} placeholder="Enter password" label="Password:" />
+                    <div><PasswordField size="lg" id="logpass" {...register("password")} placeholder="Enter password" label="Password:" />
+                    <a href="#" id="forgot">Forgot password?</a></div>
                     <div id="submit_cont">
                       <Button type="submit" id="submit">Log In</Button>
                     </div>

@@ -1,0 +1,20 @@
+.inputs_login{
+    width: 400px;
+}
+#submit_cont{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+#submit{
+    width: 250px;
+    height: 45px;
+    background: linear-gradient(45deg, rgb(179, 185, 1), rgb(239, 96, 255));
+    border: none;
+}
+#forgot{
+    display: flex;
+    justify-content: end;
+    margin-top: 5px;
+    font-size: 18px;
+}
