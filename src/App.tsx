@@ -1,29 +1,22 @@
 import { useState } from 'react'
 import './App.css'
 import {Center, Form} from "@prismane/core";
-import Register from './custom_components/comonents/Register';
-import Toggler from './custom_components/comonents/Toggler';
-import Login from './custom_components/comonents/Login';
-import PrismaneProvider from '@prismane/core';
+import { PRISMANE_COLORS, PrismaneProvider } from '@prismane/core';
+import StartPage from './pages/Start_page';
+import {Route, Routes, BrowserRouter} from 'react-router-dom';
 
 const App = () => {
-  const [values, setValues] = useState("");
-  const [status, setStatus] = useState(""); // Хранит текущее состояние
-  
-  const handleClick = (status: string) => {setStatus(status);};
-  
+  const theme = {
+    mode: "black",
+  };
   return (
-    <Center direction="column" justify="center" w="100%">
-      <div id="title">
-        <h1 id="title-text">Messenger</h1>
-      </div>
-      <div id="toggler">
-        <Toggler onClick={handleClick}/>
-      </div>
-      <div id="inputs">
-      {status === "signup" ? <Register /> : <Login />}
-      </div>
-    </Center>
+    <PrismaneProvider theme={theme}>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<StartPage/> } />
+      </Routes>
+    </BrowserRouter>
+    </PrismaneProvider>
   );
   
 };
