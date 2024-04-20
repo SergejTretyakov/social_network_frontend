@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import '../custom_components/styles/Start_page.css'
+import './Start_page.css'
 import {Center, Form} from "@prismane/core";
-import Register from '../custom_components/comonents/Register';
-import Toggler from '../custom_components/comonents/Toggler';
-import Login from '../custom_components/comonents/Login';
+import Register from '../components/forms/Register';
+import StartToggler from '../components/togglers/StartToggler';
+import Login from '../components/forms/Login';
 import PrismaneProvider from '@prismane/core';
+
 
 const StartPage = () => {
   const [values, setValues] = useState("");
@@ -18,7 +19,7 @@ const StartPage = () => {
         <h1 id="title-text">Messenger</h1>
       </div>
       <div id="toggler">
-        <Toggler onClick={handleClick}/>
+        <StartToggler onClick={handleClick}/>
       </div>
       <div id="inputs">
       {status === "signup" ? <Register /> : <Login />}

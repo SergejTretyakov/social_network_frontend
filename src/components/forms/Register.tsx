@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react'
 import {Form, fr, TextField, Button, PasswordField, NativeDateField, Checkbox} from "@prismane/core";
 import { Grid } from "@prismane/core";
 import { useForm } from "@prismane/core/hooks";
-import '../styles/Register.css';
+import './Register.css';
 import axios from 'axios';
 import { required, min, max } from '@prismane/core/validators';
 

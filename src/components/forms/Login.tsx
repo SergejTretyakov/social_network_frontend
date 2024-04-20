@@ -3,7 +3,7 @@ import {Form, TextField, Button, PasswordField} from "@prismane/core";
 import { TextFieldProps, PasswordFieldProps } from '@prismane/core';
 import { Flex } from "@prismane/core";
 import { useForm } from "@prismane/core/hooks";
-import "../styles/Login.css";
+import "./Login.css";
 
 function Login(){
 

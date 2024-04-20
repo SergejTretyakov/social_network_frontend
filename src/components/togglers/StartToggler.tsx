@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Box, Button, Animation, fr} from "@prismane/core";
-import '../styles/Toggler.css'
+import './StartToggler.css'
 
 interface TogglerProps {
     onClick: (status: string) => void;
 }
 
-function Toggler({ onClick }: TogglerProps) {
+function StartToggler({ onClick }: TogglerProps) {
 
     const [animated, setAnimated] = useState(false);
     const [isSignInActive, setIsSignInActive] = useState(true);
@@ -58,4 +58,4 @@ function Toggler({ onClick }: TogglerProps) {
         </>
     );
 }
-export default Toggler;
+export default StartToggler;
