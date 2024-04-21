@@ -4,8 +4,10 @@ import { Grid } from "@prismane/core";
 import { useForm } from "@prismane/core/hooks";
 import './Register.css';
 import axios from 'axios';
-import { required, min, max, email } from '@prismane/core/validators';
+import { required, min, max, email, match } from '@prismane/core/validators';
 import moment from 'moment';
+import { z } from "zod";
+import p from "../../utils/zodToPrismane";
 
 function Register(){
 
@@ -22,43 +24,59 @@ function Register(){
         name: {
           value: "",
           validators: {
-            required: (v) => required(v),
-            min: (v) => min(v, 4),
+            required: (v) => p(v, z.string().min(1, {
+              message: "Поле обязательно для заполнения",
+            })),
+            min: (v) => 
+            p(v, z.string().min(5, {
+              message: "Длина имени должна быть больше 5 символов",
+            })),
           },
         },
         surname: {
           value: "",
           validators: {
-            required: (v) => required(v),
+            required: (v) => p(v, z.string().min(1, {
+              message: "Поле обязательно для заполнения",
+            })),
             min: (v) => min(v, 4),
           },
         },
         email: {
           value: "",
           validators: {
-            required: (v) => required(v),
-            min: (v) => min(v, 4),
-            email: (v: string) => email(v),
+            required: (v) => p(v, z.string().min(1, {
+              message: "Поле обязательно для заполнения",
+            })),
+            email: (v: string) => p(v, z.string().email({
+              message: "Email не соответсвтует требованиям",
+            })),
           },
         },
         password: {
           value: "",
           validators: {
-            required: (v) => required(v),
+            required: (v) => p(v, z.string().min(1, {
+              message: "Поле обязательно для заполнения",
+            })),
             min: (v) => min(v, 4),
           },
         },
         confirm_password: {
           value: "",
           validators: {
-            required: (v) => required(v),
-            min: (v) => min(v, 4),
+            required: (v: string) => p(v, z.string().min(1, {
+              message: "Поле обязательно для заполнения",
+            })),
+            match: (v: string) => match(v, register("password").value),
           },
         },
         birth_date:{
           value: date,
           validators: {
-            required: (v) => required(v),
+            required: (v) => p(v, z.string().min(1, {
+              message: "Поле обязательно для заполнения",
+            })),
           },
         },
         agreement:{
@@ -66,8 +84,8 @@ function Register(){
           validators: {
             required: (v) => required(v),
           },
-        },
       },
+    },
     });
 
     async function save() {
