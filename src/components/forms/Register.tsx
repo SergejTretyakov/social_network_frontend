@@ -4,7 +4,8 @@ import { Grid } from "@prismane/core";
 import { useForm } from "@prismane/core/hooks";
 import './Register.css';
 import axios from 'axios';
-import { required, min, max } from '@prismane/core/validators';
+import { required, min, max, email } from '@prismane/core/validators';
+import moment from 'moment';
 
 function Register(){
 
@@ -16,57 +17,84 @@ function Register(){
     const [agree, setAgree] = useState("");
     const agreeChange = (e: React.ChangeEvent<HTMLInputElement>) => setAgree(e.target.value);
 
-    const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirm, setConfirm] = useState("");
-
-    async function save() {
-      try {
-        await axios.post("http://localhost:8085/api/v1/employee/save", {
-        name: name,
-        surname: surname,
-        birth_date: date,
-        email: email,
-        password: password,
-        });
-        alert("Registation Successfully");
-      } catch (err) {
-        alert(err);
-      }
-    }
-
     const { handleReset, handleSubmit, register } = useForm({
-        fields: {
-          name: {
-            value: "",
-            validators: {
-              required: (v) => required(v),
-              min: (v) => min(v, 4),
-            },
-          },
-          surname: {
-            value: "",
-          },
-          email: {
-            value: "",
-          },
-          password: {
-            value: "",
-          },
-          confirm_password: {
-            value: "",
-          },
-          birth_date:{
-            value: date,
-          },
-          agreement:{
-            value: "",
+      fields: {
+        name: {
+          value: "",
+          validators: {
+            required: (v) => required(v),
+            min: (v) => min(v, 4),
           },
         },
-      });
+        surname: {
+          value: "",
+          validators: {
+            required: (v) => required(v),
+            min: (v) => min(v, 4),
+          },
+        },
+        email: {
+          value: "",
+          validators: {
+            required: (v) => required(v),
+            min: (v) => min(v, 4),
+            email: (v: string) => email(v),
+          },
+        },
+        password: {
+          value: "",
+          validators: {
+            required: (v) => required(v),
+            min: (v) => min(v, 4),
+          },
+        },
+        confirm_password: {
+          value: "",
+          validators: {
+            required: (v) => required(v),
+            min: (v) => min(v, 4),
+          },
+        },
+        birth_date:{
+          value: date,
+          validators: {
+            required: (v) => required(v),
+          },
+        },
+        agreement:{
+          value: "",
+          validators: {
+            required: (v) => required(v),
+          },
+        },
+      },
+    });
 
+    async function save() {
+           
+        axios.post("http://localhost:8000/api/v1/register",{
+            name: register("name").value,
+            surname: register("surname").value,
+            email: register("email").value,
+            password: register("password").value,
+            birthdayDate: moment(register("birth_date").value ).format("DD/MM/YYYY"), //21/09/2003
+            role: "USER"
+        }).then(response => {
+            console.log(response);
+        }).catch(() => {
+            console.log({
+              name: register("name").value,
+              surname: register("surname").value,
+              email: register("email").value,
+              password: register("password").value,
+              birthdayDate: moment(register("birth_date").value).format("DD/MM/YYYY"), //21/09/2003
+              role: "USER",
+            });
+            
+        });
+    }
+
+    
     return(
            <Form
            id="form"
@@ -78,7 +106,7 @@ function Register(){
             <div><TextField size="lg" className="input" {...register("surname")} placeholder="Enter surname" label="Surname:"/></div>
             <div>
             <NativeDateField
-            size="lg"
+              size="lg"
               className="input"
               name="date"
               label="Birth date:"
