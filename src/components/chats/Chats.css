@@ -1,10 +1,80 @@
 #chats-container{
     height: 98vh;
     background-color:#3A3A3A;
-    width: 27%;
+    width: 23%;
     margin-top: 1vh;
     margin-bottom: 1vh;
     border-left: 1px;
     border-style: solid;
+    flex-direction: column;
     
 }
+#search-dialog{
+    display: flex !important;
+    margin-top: 15px;
+    width: 100% !important;
+    height: 100% !important
+}
+#chats-header{
+    display: flex;
+    flex-direction: column;
+}
+.search-chats{
+    align-self: center !important;
+    height: fit-content !important;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    font-size: 22px !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    border-radius: 15px !important;
+    background-color: #1E1E1E !important;
+    color:white !important;
+    font-weight:500 !important;
+    border: none;
+}
+.search-chats > input{
+    padding-left: 10px !important;
+    
+}
+#chats-toggler{
+    margin-top: 10px;
+    margin-top: 5%;
+}
+.PrismaneContainer-root{
+    padding: 0;
+}
+#chats-body{
+    margin-top: 10px;
+    margin-top: 5%;
+    background-color: #1E1E1E;
+    height: 77vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column;
+}
+#chats-footer{
+    justify-content: center;
+    align-items: center;
+    height: 6%;
+}
+.chat-item{
+
+    flex-grow: 0 !important;
+}
+@media (min-width: 1850px){
+    #search-dialog > .PrismaneBox-root{
+        
+    }
+}
+#chats-body::-webkit-scrollbar {
+    width: 12px;            /* ширина scrollbar */
+  }
+  #chats-body::-webkit-scrollbar-track {
+    background: rgb(193, 193, 193);        /* цвет дорожки */
+  }
+  #chats-body::-webkit-scrollbar-thumb {
+    background-color: rgb(224, 255, 47);    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 3px solid rgb(224, 255, 47);  /* padding вокруг плашки */
+  }

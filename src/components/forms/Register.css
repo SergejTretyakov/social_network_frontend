@@ -11,8 +11,8 @@
 }
 #grid{
     grid-column-gap: 90px;
-    margin-bottom: 30px;
     width: 100%;
+    margin-bottom: 5vh;
 }
 #submit{
     width: 300px !important;
@@ -36,4 +36,9 @@ a{
     left: 25%;
     color: red;
     font-size: 16px !important;
+}
+.error-message{
+    color: rgb(255, 85, 85);
+}
+#date{
 }

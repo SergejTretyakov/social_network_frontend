@@ -1,0 +1,32 @@
+.btn{
+    width: 48% !important;
+    outline: none;
+    border: none;
+    height: 5vh;
+    z-index: 1;
+}
+#toggler-back{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    background-color: #1E1E1E !important;
+    width: 88%;
+    justify-content: space-between;
+    height: fit-content;
+    border-radius: 15px;
+    padding: 5px;
+    padding-bottom: 8px;
+}
+#toggler-chatitem-back{
+    z-index: 0;
+    background-color: #3A3A3A;
+    position: absolute;
+    left: 0px;
+    margin-left: 5%;
+    margin-right: 5px;
+    border-radius: 12px;
+    width: 40%;
+    height: 70%;
+    margin-top: 3px;
+}

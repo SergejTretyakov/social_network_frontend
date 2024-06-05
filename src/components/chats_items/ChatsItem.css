@@ -1,0 +1,37 @@
+.item-body{
+    background-color: grey;
+    display: flex !important;
+    width: 100%;
+    flex-direction: row !important;
+}
+.item-body:hover{
+    background-color: rgb(78, 78, 78);
+}
+.dialog-avatar{
+    margin: 2vh;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+    img{
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+    }
+    
+}
+.dialog-info{
+    margin-left: 5%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    .username{
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        
+    }
+    .time-message{
+        margin-left: 15%;
+        
+    }
+}

@@ -1,6 +1,5 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent } from 'react'
 import {Form, TextField, Button, PasswordField} from "@prismane/core";
-import { TextFieldProps, PasswordFieldProps } from '@prismane/core';
 import { Flex } from "@prismane/core";
 import { useForm } from "@prismane/core/hooks";
 import { z } from "zod";
@@ -10,7 +9,8 @@ import axios from 'axios';
 
 function Login(){
 
-    const [value, setValue] = useState("");
+
+    const path = "http://localhost:5433/api/v1/login";
 
     /* Получение данных с формы и валидация полей */
     const { handleReset, handleSubmit, register } = useForm({
@@ -41,7 +41,7 @@ function Login(){
       /* Отправка данных на сервер */
       async function autorize() {
            
-        axios.post("http://localhost:8000/api/v1/login",{
+        axios.post(path,{
             email: register("email").value,
             password: register("password").value,
         }).then(response => {
