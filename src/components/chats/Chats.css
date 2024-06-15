@@ -1,33 +1,43 @@
 #chats-container{
-    height: 98vh;
+    height: 100vh !important;
     background-color:#3A3A3A;
-    width: 23%;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    width: 25%;
+    min-width: 300px;
     border-left: 1px;
     border-style: solid;
     flex-direction: column;
     
 }
+.fullname{
+    font-size: 19px;
+}
+.avatar_friend{
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    object-fit: cover;
+}
 #search-dialog{
     display: flex !important;
-    margin-top: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
     width: 100% !important;
-    height: 100% !important
+    height: 30px !important
 }
 #chats-header{
     display: flex;
     flex-direction: column;
 }
 .search-chats{
-    align-self: center !important;
-    height: fit-content !important;
+    margin-top: 1vh !important;
+    height: 4vh !important;
     padding-top: 3px;
     padding-bottom: 5px;
-    font-size: 22px !important;
+    font-size: 20px !important;
     gap: 0 !important;
     margin: 0 !important;
-    border-radius: 15px !important;
+    border-radius: 25px !important;
     background-color: #1E1E1E !important;
     color:white !important;
     font-weight:500 !important;
@@ -38,17 +48,16 @@
     
 }
 #chats-toggler{
-    margin-top: 10px;
-    margin-top: 5%;
+    margin-top: 2vh;
+    max-width: 100% !important;
 }
 .PrismaneContainer-root{
     padding: 0;
 }
 #chats-body{
     margin-top: 10px;
-    margin-top: 5%;
     background-color: #1E1E1E;
-    height: 77vh;
+    height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
     flex-direction: column;
@@ -62,19 +71,34 @@
 
     flex-grow: 0 !important;
 }
+.PrismaneMenu-root{
+    position: absolute;
+    margin-top: 6vh;
+    background-color: #272727 !important;
+}
+.PrismaneMenuItem-root{
+    color: white !important;
+}
+.prof{
+    margin-top: 10px;
+    margin-left: 10px;
+}
 @media (min-width: 1850px){
     #search-dialog > .PrismaneBox-root{
         
     }
 }
 #chats-body::-webkit-scrollbar {
-    width: 12px;            /* ширина scrollbar */
+    width: 6px;            /* ширина scrollbar */
   }
   #chats-body::-webkit-scrollbar-track {
-    background: rgb(193, 193, 193);        /* цвет дорожки */
+    background: rgb(51, 51, 51);        /* цвет дорожки */
   }
   #chats-body::-webkit-scrollbar-thumb {
-    background-color: rgb(224, 255, 47);    /* цвет плашки */
+    background-color: rgb(67, 67, 67);    /* цвет плашки */
     border-radius: 20px;       /* закругления плашки */
-    border: 3px solid rgb(224, 255, 47);  /* padding вокруг плашки */
+    border: 3px solid rgb(83, 83, 83);  /* padding вокруг плашки */
+    color: rgb(67, 67, 67);
   }
+
+  

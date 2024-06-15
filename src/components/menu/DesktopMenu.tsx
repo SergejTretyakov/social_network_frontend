@@ -1,85 +1,83 @@
-import {Avatar, Flex, Container} from "@prismane/core";
+import {Avatar, Flex, Container, Divider} from "@prismane/core";
 import "./DesktopMenu.css";
-import { IoChatbubblesOutline } from "react-icons/io5";
-import { BiBroadcast } from "react-icons/bi";
-import { IoPersonAddOutline } from "react-icons/io5";
-import { MdOutlineUnarchive } from "react-icons/md";
-import { IoNotifications } from "react-icons/io5";
-import { IoMdSettings } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { Menu, fr, Button, Switch} from "@prismane/core";
+import { Icon } from "@prismane/core";
+import { Chat, GearSix, Images, MagnifyingGlass, SignOut, User } from "@phosphor-icons/react";
+import { IoMdMenu } from "react-icons/io";
+import { CiLight } from "react-icons/ci";
+
 
 interface MenuProps {
     onClick: (tab: string) => void;
 }
 
-function Menu({ onClick }: MenuProps){
+function CustomMenu({ onClick }: MenuProps) {
+  const [open1, setOpen1] = useState(false);
+  const [value, setValue] = useState(false);
+  const [status, setStatus] = useState("");
+  const menuRef = useRef<HTMLDivElement>(null);
 
-    const [tab, setTab] = useState("");
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen1(false);
+      }
+    };
 
-    const handleTab = (index: number) => {
-        const tabs = document.querySelectorAll(".tab");
-        tabs.forEach((tab) => {
-          tab.classList.remove("active-tab");
-          tab.classList.add("inactive-tab");
-        });
-        const selectedTab = tabs[index];
-        switch (index) {
-          case 0:
-            onClick("chat");
-            break;
-          case 1:
-            onClick("channels");
-            break;
-          case 2:
-            onClick("friends");
-            break;
-          case 3:
-            onClick("archive");
-            break;
-          case 4:
-            onClick("notifications");
-            break;
-          case 5:
-            onClick("settings");
-            break;
-          default:
-            onClick("chat");
-            break;
-        }
-        selectedTab.classList.remove("inactive-tab");
-        selectedTab.classList.add("active-tab");
-      };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
-    return(
-        <Flex className="body_back">
-            <Flex id="cont1">
-                    <Container id="ava">
-                        <Avatar size="base">
-                        </Avatar>
-                    </Container>
-                    <Container>
-                        <IoChatbubblesOutline size={"55%"} className="tab active-tab" onClick={() => handleTab(0)} />
-                    </Container>
-                    <Container>
-                        <BiBroadcast size={"55%"} className="tab inactive-tab" onClick={() => handleTab(1)} />
-                    </Container>
-                    <Container>
-                        <IoPersonAddOutline size={"55%"} className="tab inactive-tab" onClick={() => handleTab(2)} />
-                    </Container>
-                    <Container>
-                        <MdOutlineUnarchive size={"55%"} className="tab inactive-tab" onClick={() => handleTab(3)} />
-                    </Container>
-            </Flex>
-            <Flex id="cont2">
-                <Container>
-                    <IoNotifications size={"50%"} className="tab inactive-tab" onClick={() => handleTab(4)} />
-                </Container>
-                <Container>
-                    <IoMdSettings size={"50%"} className="tab inactive-tab" onClick={() => handleTab(5)} />
-                </Container>
-            </Flex>
-        </Flex>
-    );
+  return (
+    <Flex direction="column" gap={fr(2)}>
+      <Button id="menu" onClick={() => setOpen1(!open1)} >
+        <IoMdMenu size={'4vh'} color={"rgb(197, 197, 197)"} />
+      </Button>
+      <Menu ref={menuRef} w={fr(65)} open={open1} id="menu-body">
+        
+        <Menu.Item  onClick={() => onClick("Friends")}>
+          <Menu.Icon>
+            <User />
+          </Menu.Icon>
+          <label className="item">Друзья</label>
+        </Menu.Item>
+
+        <Menu.Item className="item" onClick={() => onClick("Chats")}>
+          <Menu.Icon>
+            <Chat />
+          </Menu.Icon>
+          <label className="item">Чаты</label>
+        </Menu.Item>
+
+        <Menu.Item className="item" onClick={() => onClick("Light Mode")}>
+          <Menu.Icon>
+            <CiLight />
+          </Menu.Icon>
+          <Container id="light_mode">
+            <label className="item">Светлая тема</label>
+            <Switch value={value} onChange={(e) => setValue(e.target.checked)} />
+          </Container>
+        </Menu.Item>
+
+        <Menu.Item className="item" onClick={() => onClick("Settings")}>
+          <Menu.Icon>
+            <GearSix />
+          </Menu.Icon>
+          <label className="item">Настройки</label>
+        </Menu.Item>
+
+        <Menu.Item className="item" color="red" onClick={() => onClick("Log Out")}>
+          <Menu.Icon>
+            <SignOut color="rgb(255, 109, 109)" />
+          </Menu.Icon>
+          <label className="item">Выход</label>
+        </Menu.Item>
+      </Menu>
+    </Flex>
+  );
 }
 
-export default Menu
+export default CustomMenu

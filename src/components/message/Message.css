@@ -1,0 +1,39 @@
+.message_body_others{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    padding: 1vh;
+    float:left;
+    background-color: rgb(99, 99, 99);
+    border-radius: 15px;
+    margin-bottom: 1vh;
+    display: flex;
+    font-size: 18px;
+}
+.message_body_owner{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    padding: 1vh;
+    float:right;
+    background-color: rgb(116, 128, 255);
+    border-radius: 15px;
+    margin-bottom: 1vh;
+    display: flex;
+    font-size: 18px;
+    
+}
+.message-text{
+    margin-right: 1vh;
+}
+
+.message-time{
+    display: flex;
+    font-size: 1.2vh;
+    align-items: end;
+}
+.message-menu{
+    position: absolute !important;
+    top: -400%;
+    left: -40%;
+}

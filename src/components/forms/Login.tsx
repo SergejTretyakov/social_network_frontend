@@ -6,11 +6,12 @@ import { z } from "zod";
 import p from "../../utils/zodToPrismane";
 import "./Login.css";
 import axios from 'axios';
+import { Route } from 'react-router-dom';
 
 function Login(){
 
 
-    const path = "http://localhost:5433/api/v1/login";
+    const path = "http://127.0.0.1:8080/auth/login";
 
     /* Получение данных с формы и валидация полей */
     const { handleReset, handleSubmit, register } = useForm({
@@ -45,13 +46,11 @@ function Login(){
             email: register("email").value,
             password: register("password").value,
         }).then(response => {
-            console.log(response);
-        }).catch(() => {
-            console.log({
-              email: register("email").value,
-              password: register("password").value,
-            });
-        });
+            if (response.status !== 200) return
+            localStorage.setItem('accessToken', response.data.access_token);
+            localStorage.setItem('refreshToken', response.data.refresh_token);
+            window.location.assign('http://localhost:5173/MainPage/');
+        }).catch(error => console.error(error));
     }
 
     /* Форма входа */

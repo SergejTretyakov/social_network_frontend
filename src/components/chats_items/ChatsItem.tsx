@@ -5,18 +5,23 @@ import './ChatsItem.css';
 
 
 interface ChatItem {
-    onClick: (status: string) => void;
+    key: number;
+    onClick: (id: number) => void;
+    id: number;
     avatar: string;
     username: string;
     lastMessage: string;
     lastMessageTime: string;
     pinned: boolean;
-    unreaded: number;
+    is_read: boolean;
 }
 
-function ChatsItem({ onClick, avatar, username, lastMessage, lastMessageTime, pinned, unreaded }: ChatItem) {
+function ChatsItem({onClick, avatar, username, lastMessage, lastMessageTime, pinned, is_read, id }: ChatItem) {
+
+
+
     return(
-    <div className="item-body">
+    <div className="item-body" onClick={() => onClick(id)}>
         <Flex className="dialog-avatar">
             <img src={avatar}/>
         </Flex>
@@ -26,7 +31,7 @@ function ChatsItem({ onClick, avatar, username, lastMessage, lastMessageTime, pi
                 <label className="time-message">{lastMessageTime}</label>
             </Flex>
             <Flex className="message">
-                <label>{lastMessage}</label>
+                <label className="body-messages">{lastMessage}</label>
             </Flex>
         </Flex>
         <Flex className="counter-or-pin">

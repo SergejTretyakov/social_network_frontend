@@ -9,7 +9,7 @@ import {RegisterErrors} from '../../utils/schema';
 
 function Register(){
 
-    const path = "http://localhost:8000/api/v1/auth/signup";
+    const path = "http://127.0.0.1:8080/auth/registrations";
 
     const [state, setState] = useState("");
 
@@ -18,6 +18,8 @@ function Register(){
     const [agree, setAgree] = useState("");
 
     const [errors, setErrors] = useState<RegisterErrors>({});
+
+    const [success, setSuccess] = useState("");
 
     const [formData, setFormData] = useState({
       name: '',
@@ -140,18 +142,33 @@ function Register(){
             last_name: data.surname,
             email: data.email,
             password: data.password,
-            birthDate: data.birthDate, //21/09/2003
+            birth_date: data.birthDate, //21/09/2003
         }).then(response => {
             console.log(response);
+            if (response.status === 201){
+                setFormData({
+                    name: '',
+                    surname: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
+                    birthDate: '',
+                    agreement: '',
+                });
+                setErrors({});
+                setAgree("");
+                setDate("");
+                setSuccess("Регистрация прошла успешно!");
+            }
         }).catch(() => {
-            console.log({
+            /*console.log({
                 first_name: data.name,
                 last_name: data.surname,
                 email: data.email,
                 password: data.password,
                 birthDate: data.birthDate, //21/09/2003
-            });
-            
+            });*/
+            setSuccess("");
         });
     };
 
@@ -251,7 +268,7 @@ function Register(){
                             {errors.agreement}
                         </span>
                     }
-                    
+                    <span>{success}</span>
             </Form>
             
     )

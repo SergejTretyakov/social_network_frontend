@@ -1,0 +1,96 @@
+#avatar{
+}
+.avatar-input{
+
+}
+.input-file {
+    color: white;
+    position: relative;
+    display: flex; /* изменено на Flexbox */
+    flex-direction: column; /* добавлено */
+    align-items: center; /* добавлено */
+    margin-bottom: 2vh;
+  }
+.avatar-button{
+    color: rgb(0, 0, 0);
+    background-color: rgb(204, 204, 0);
+    width: 80%;
+    align-self: center;
+    justify-self: center;
+}
+.input-file-btn {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 1.5vh;
+    font-weight: 500;
+    vertical-align: middle;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 6px;
+    background-color: rgb(204, 204, 0);
+    line-height: 22px;
+    width: 40%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    min-height: 4vh; /* добавлено */
+    margin-bottom: 1vh;
+  }
+  
+  .input-file-text {
+    padding: 0 10px;
+    min-height: 4vh; /* добавлено */
+    line-height: 22px; /* изменено на то же значение, что и у .input-file-btn */
+    text-align: left;
+    display: block;
+    float: right;
+    box-sizing: border-box;
+    width: 60%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-top: 10px; /* добавлено */
+    padding-bottom: 10px; /* добавлено */
+  }
+.input-file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+.PrismaneAccordionPanel-root-active{
+    height: auto !important;
+}
+.info-changer{
+    border: 1px solid rgb(252, 252, 252);
+    border-radius: 15px;
+    height: auto;
+    font-size: 18px;
+    padding: 7px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    color: white;
+}
+.info-changers-button{
+    margin-top: 10px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(204, 204, 0);
+    width: 80%;
+    align-self: center;
+    justify-self: center;
+}
+.settings-label{
+  color: white !important;
+}
+.PrismaneAccordionIcon-root{
+  color: white !important;
+}
